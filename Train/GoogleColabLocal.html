@@ -1,0 +1,118 @@
+<div id="maia-main" role="main">
+      <div class="maia-teleport" id="content"></div>
+      <div class="c1">
+        Colaboratory
+      </div>
+
+      <h1>
+        本地运行时
+      </h1>
+      <p>
+        借助 Colaboratory，您可以使用 Jupyter 连接到本地运行时。这样一来，您就可以在本地硬件上执行代码并访问本地文件系统。
+      </p>
+      <h2>
+        安全注意事项
+      </h2>
+      <p class="maia-notification warning">
+        在执行任一笔记本之前，请确保您信任其作者。采用本地连接时，您执行的代码可以在您的计算机上读取、写入以及删除文件。
+          </p>
+      <p>
+        连接到在本地计算机上运行的 Jupyter 笔记本服务器可以带来很多好处，但同时也面临严重的潜在风险。连接到本地运行时即表示您允许 Colaboratory 前端使用计算机上的本地资源执行笔记本中的代码。 这意味着笔记本可以：
+      </p>
+      <ul>
+        <li>
+          调用任意命令（例如“<code>rm -rf /</code>”）
+        </li>
+        <li>
+          访问本地文件系统
+        </li>
+        <li>
+          在计算机上运行恶意内容
+        </li>
+      </ul>
+      <p>
+        在尝试连接到本地运行时之前，请确定您信任相应笔记本的作者，并确保您了解要执行什么代码。要详细了解 Jupyter 笔记本服务器的安全模型，请参阅 <a href="http://jupyter-notebook.readthedocs.io/en/stable/security.html">Jupyter 的文档</a>。
+      </p>
+      <h2>
+        设置说明
+      </h2>
+      <p>
+        要允许 Colaboratory 连接到在本地运行的 Jupyter 服务器，您需要执行以下步骤。
+      </p>
+      <h3>
+        第 1 步：安装 Jupyter
+      </h3>
+      <p>
+        在本地机器上安装 <a href="http://jupyter.org/install">Jupyter</a>。
+      </p>
+      <h3>
+        第 2 步：安装并启用 <code>jupyter_http_over_ws</code> jupyter 扩展程序（一次性）
+      </h3>
+      <p>
+        <code>jupyter_http_over_ws</code> 扩展程序由 Colaboratory 团队开发并在 <a href="https://github.com/googlecolab/jupyter_http_over_ws">GitHub</a> 上提供。
+      </p>
+  <pre>pip install jupyter_http_over_ws
+jupyter serverextension enable --py jupyter_http_over_ws</pre>
+      <h3>
+        第 3 步：启动服务器并进行身份验证
+      </h3>
+      <p>
+        新的笔记本服务器按正常方式启动，但您需要设置一个标记来明确表明信任来自 Colaboratory 前端的 WebSocket 连接。
+      </p>
+      <pre>jupyter notebook --NotebookApp.allow_origin='https://colab.research.google.com' --port=8888 --NotebookApp.port_retries=0
+    </pre>
+      <p>
+        服务器启动后，它将输出一条消息，其中包含验证身份用到的初始后端网址。请记下此网址，在下一步中您将需要提供此信息。
+      </p>
+      <h3>
+        第 4 步：连接到本地运行时
+      </h3>
+      <p>
+        在 Colaboratory 中，点击“连接”按钮，然后选择“连接到本地代码执行程序…”。在随即显示的对话框中输入上一步中的网址，然后点击“连接”按钮。完成此操作后，您应该就已经连接到本地运行时了。
+      </p>
+      <h2>
+        针对特定浏览器的设置
+      </h2>
+      <p>
+        注意：如果您使用 Mozilla Firefox，则需要在 <a href="https://support.mozilla.org/en-US/kb/about-config-editor-firefox">Firefox 配置编辑器</a>中指定 <code>network.websocket.allowInsecureFromHTTPS</code> 偏好设置。Colaboratory 使用 WebSocket 连接到本地内核。默认情况下，Firefox 不允许使用标准 WebSocket 从 HTTPS 网域建立连接。
+      </p>
+      <h2>
+        共享
+      </h2>
+      <p>
+        如果您与其他人共享笔记本，则本地计算机上的运行时将不会被共享。当其他人打开共享的笔记本时，他们将默认连接到标准云端运行时。
+      </p>
+      <p>
+        默认情况下，所有代码单元格输出项都会存储在 Google 云端硬盘中。如果您的本地连接会访问敏感数据，并且您想要忽略代码单元格输出项，请依次选择“修改”&gt;“笔记本设置”&gt;“保存此笔记本时忽略代码单元格输出项”<i></i>。
+      </p>
+      <h2>
+        卸载
+      </h2>
+      <p>
+        您可以通过运行以下命令停用和移除 <code>jupyter_http_over_ws</code> jupyter 扩展程序：
+      </p>
+      <pre>      jupyter serverextension disable --py jupyter_http_over_ws
+      pip uninstall jupyter_http_over_ws
+      </pre>
+      <h2>
+        连接到 Google Compute Engine 实例上的运行时
+      </h2>
+      <p>
+        如果您要连接的 Jupyter 笔记本服务器运行在另一计算机（例如 Google Compute Engine 实例）上，您可以设置 SSH 本地端口转发，以允许 Colaboratory 连接到该服务器。
+      </p>
+      <p class="maia-notification">
+        注意：Google Cloud Platform 提供了已预配置 Colaboratory 本地后端支持的深度学习虚拟机映像。请按照<a href="https://cloud.google.com/deep-learning-vm/docs/">方法指南</a>设置您的配置了本地 SSH 端口转发的 Google 计算引擎实例。如果您使用了这些映像，请直接跳到“第 4 步：连接到本地代码执行程序”（使用端口 8888）。
+      </p>
+      <p>
+        首先，按照上述说明设置您的 Jupyter 笔记本服务器。
+      </p>
+      <p>
+        然后，建立从本地计算机到远程实例（例如 Google Compute Engine 实例）的 SSH 连接，并指定“-L”标记。例如，要将本地计算机上的端口 8888 转发到 Google Compute Engine 实例上的端口 8888，请运行以下命令：
+      </p>
+      <pre>gcloud compute ssh --zone YOUR_ZONE YOUR_INSTANCE_NAME -- -L 8888:localhost:8888
+    </pre>
+      <p>
+        最后，通过连接到转发端口在 Colaboratory 内建立连接（按照“第 4 步：连接到本地代码执行程序”的说明，进行同样操作）。
+      </p>
+
+    </div>
