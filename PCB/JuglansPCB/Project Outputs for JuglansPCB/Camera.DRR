@@ -1,0 +1,17 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Camera.PcbDoc   2022/3/16  14:45:30
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Camera-RoundHoles.TXT
+ASCII SlotHoles File : Camera-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      79mil (2mm)                                               Slot              2         PTH        0.00inch (0.00mm)
+T2      87mil (2.2mm)                                             Round             2         PTH        0.00inch (0.00mm)
+T3      87mil (2.2mm)                                             Slot              2         PTH        0.00inch (0.00mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              6
+
+Total Processing Time (hh:mm:ss) : 00:00:00

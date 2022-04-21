@@ -1,0 +1,19 @@
+Added Component: Designator=C3(CAP)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "PackageDescription"; Value = "Capacitor; 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "CAPR5-4X5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "23-Sep-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100uF"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Member To Class: ClassName=Juglans Member=Component C3 Cap2
+Added Member To Class: ClassName=Juglans Member=Component R2 Res2
+Added Member To Class: ClassName=Juglans Member=Component R3 Res2
+Added Member To Class: ClassName=Juglans Member=Component R4 Res2
+Added Member To Class: ClassName=Juglans Member=Component R5 Res2
+Added Member To Class: ClassName=Juglans Member=Component R6 Res2
+Added Member To Class: ClassName=Juglans Member=Component R7 Res2
+Added Member To Class: ClassName=Juglans Member=Component R8 Res2
+Added Member To Class: ClassName=Juglans Member=Component R9 Res2
+Added Member To Class: ClassName=Juglans Member=Component U1 MaixBit
