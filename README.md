@@ -2,12 +2,12 @@
 
 # JuglansCar
 
-<img src="https://img.shields.io/badge/Python-3.8.3-red" alt="Python">
-<img src="https://img.shields.io/badge/TensorFlow-2.7.0-yellowgreen" alt="TensorFlow">
-<img src="https://img.shields.io/badge/CUDA-v11.5-brightgreen" alt="CUDA">
-<img src="https://img.shields.io/badge/NNCase-0.2.0%20Beta4-yellow" alt="NNCase">
-<img src="https://img.shields.io/badge/Author-CCBP-blue" alt="Atuhor">
-<img src="https://img.shields.io/badge/license-MIT-lightgrey" alt="license">
+<img src="https://img.shields.io/badge/Python-3.8.3-red" alt="Python" />
+<img src="https://img.shields.io/badge/TensorFlow-2.7.0-yellowgreen" alt="TensorFlow" />
+<img src="https://img.shields.io/badge/CUDA-v11.5-brightgreen" alt="CUDA" />
+<img src="https://img.shields.io/badge/NNCase-0.2.0%20Beta4-yellow" alt="NNCase" />
+<img src="https://img.shields.io/badge/Author-CCBP-blue" alt="Atuhor" />
+<img src="https://img.shields.io/badge/license-MIT-lightgrey" alt="license" />
 
 <br/>
 
