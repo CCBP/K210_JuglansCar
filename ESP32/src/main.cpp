@@ -6,8 +6,8 @@
 #include "web_server.h"
 #include "spi_dma_slave.h"
 
-const char *ssid = "TH-P";
-const char *password = "PJZ3698050pjz";
+const char *ssid = "****";
+const char *password = "****";
 
 void setup()
 {
@@ -45,7 +45,7 @@ void setup()
 
   web_server_init();
   video_server_init();
-  digitalWrite(2, HIGH);  // 初始化结束
+  digitalWrite(2, HIGH); // 初始化结束
 }
 
 void loop()
