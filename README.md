@@ -2,6 +2,15 @@
 
 # JuglansCar
 
+<img src="https://img.shields.io/badge/Python-3.8.3-red" alt="Python">
+<img src="https://img.shields.io/badge/TensorFlow-2.7.0-yellowgreen" alt="TensorFlow">
+<img src="https://img.shields.io/badge/CUDA-v11.5-brightgreen" alt="CUDA">
+<img src="https://img.shields.io/badge/NNCase-0.2.0%20Beta4-yellow" alt="NNCase">
+<img src="https://img.shields.io/badge/Author-CCBP-blue" alt="Atuhor">
+<img src="https://img.shields.io/badge/license-MIT-lightgrey" alt="license">
+
+<br/>
+
 基于勘智K210实现的深度学习智能循迹车，使用ESP32搭建HTTP服务器提供Web页面用于小车的遥控控制。在Google Colab环境下使用Keras并基于MobileNet进行模型训练实现小车的自动横向驾驶。
 
 # 运行环境
@@ -93,6 +102,23 @@ MaixBit板载RGB三色LED，其中当K210初始化完成后**红色LED闪烁**�
 ### data
 
 驾驶数据存放目录，运行时会自动将道路图像储存在此并生成储存相应转角、速度信息的`dataset.csv`文件，`dataset.scv`文件中每一行对应一张道路图像，第一列为图像编号，与储存的图像名相同；第二列为转角信息；第三列为速度信息。采集功能由`dataset.py`完成，为防止采集速度过快使数据相差不大，设置为默认**50ms进行一次采集**。
+
+### actuator.py
+
+此程序用于提供接口驱动PCA9685控制舵机以及电调，在程序开头给出了一些常量，可以通过修改这些值改变舵机的最大角度与电机的最大转速，以进行小车的校准。
+
+```
+# STEERING FOR PWM_STEERING_THROTTLE (and deprecated I2C_SERVO)
+STEERING_CHANNEL = 1            # (deprecated) channel on the 9685 pwm board 0-15
+STEERING_LEFT_PWM = 450         # pwm value for full left steering
+STEERING_RIGHT_PWM = 250        # pwm value for full right steering
+
+# THROTTLE FOR PWM_STEERING_THROTTLE (and deprecated I2C_SERVO)
+THROTTLE_CHANNEL = 0            # (deprecated) channel on the 9685 pwm board 0-15
+THROTTLE_FORWARD_PWM = 400      # pwm value for max forward throttle
+THROTTLE_STOPPED_PWM = 370      # pwm value for no movement
+THROTTLE_REVERSE_PWM = 320      # pwm value for max reverse throttle
+```
 
 ## Dataset
 ### dataset.py
