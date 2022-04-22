@@ -56,8 +56,8 @@ while (True):
         origin_data = csv.reader(origin)
         output_data = csv.writer(output, lineterminator = "\n")
         read = int(input("read start numer: "))
+        max = int(input("read end numer: "))
         save = int(input("save start numer: "))
-        max = int(input("max numer: "))
     except BaseException as err:
         print(type(err), err, ", try again")
         continue
