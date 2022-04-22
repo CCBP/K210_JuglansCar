@@ -1,15 +1,15 @@
-![LOGO](assets/LOGO/juglans_banner.png)
+<div align="center">
+<img src= "assets/LOGO/juglans_banner.png" alt="LOGO" />
+</div>
 
 # JuglansCar
 
-<img src="https://img.shields.io/badge/Python-3.8.3-red" alt="Python" />
-<img src="https://img.shields.io/badge/TensorFlow-2.7.0-yellowgreen" alt="TensorFlow" />
-<img src="https://img.shields.io/badge/CUDA-v11.5-brightgreen" alt="CUDA" />
-<img src="https://img.shields.io/badge/NNCase-0.2.0%20Beta4-yellow" alt="NNCase" />
-<img src="https://img.shields.io/badge/Author-CCBP-blue" alt="Atuhor" />
-<img src="https://img.shields.io/badge/license-MIT-lightgrey" alt="license" />
-
-<br/>
+![Python](https://img.shields.io/badge/Python-3.8.3-red)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.7.0-yellowgreen)
+![CUDA](https://img.shields.io/badge/CUDA-v11.5-brightgreen)
+![NNCase](https://img.shields.io/badge/NNCase-0.2.0%20Beta4-yellow)
+![Author](https://img.shields.io/badge/Author-CCBP-blue)
+![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
 基于勘智K210实现的深度学习智能循迹车，使用ESP32搭建HTTP服务器提供Web页面用于小车的遥控控制。在Google Colab环境下使用Keras并基于MobileNet进行模型训练实现小车的自动横向驾驶。
 
