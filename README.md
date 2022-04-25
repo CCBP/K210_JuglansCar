@@ -152,12 +152,18 @@ THROTTLE_REVERSE_PWM = 320      # pwm value for max reverse throttle
 
 此目录用于存放使用OpenCV的`cv2.resize(img, (160, 160))`函数将训练图像缩放为**160X160像素**后的图像数据，用于在NNCase模型转换时进行量化，以及用于对转换过后的kmodel文件进行验证。
 
+# 已知问题
+- 模型准确率以及在K210中的运行速度有待提升；
+- 使用**手机**连接ESP32时页面发送过慢会使看门狗超时，导致需多次尝试才可成功连接，而使用电脑连接时则不会出现该问题，推测为需要发送的页面过大导致；
+- 图传速度过慢，故目前已禁用；
+- 控制页面还需优化。
+
 # 相关链接
 - [MaixPy 文档简介](https://wiki.sipeed.com/soft/maixpy/zh/)
 - [Keras 中文文档](https://keras.io/zh/)
 - 我的博客：
   - [Juglans](https://www.ccbp.me/2022/01/03/juglans/)
-  - [kmodel 避坑指南]()
+  - [kmodel 避坑指南](https://www.ccbp.me/2022/04/25/kmodel/)
 - [漂移驴车-1-硬件组装教程](https://www.bilibili.com/video/BV1qQ4y1S7kw?spm_id_from=444.41.header_right.fav_list.click)
 
 # 致谢
