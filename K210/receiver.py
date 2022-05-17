@@ -26,8 +26,9 @@ class Receiver:
         self.recording = False
 
     def __receive_callback(self, data):
-        if (self.unlock):               # receive enable
-            self.msg += chr(data)
+        if (self.unlock):                       # receive enable
+            if (isinstance(self.msg, str)):     # try to prevent __iadd__ error
+                self.msg += chr(data)
 
     def __transmit_callback(self):
         pass

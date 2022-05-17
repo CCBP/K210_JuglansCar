@@ -84,7 +84,7 @@ class Dataset:
             now = time.ticks_ms()
             if (now - self.last_time > self.gap):
                 self.data_num += 1
-                img.save(self.path + str(self.data_num) + ".jpg")
+                img.save(self.path + str(self.data_num) + ".jpg")               # MemoryError
                 self.f.write("{},{},{}\n".format(self.data_num, angle, speed))
                 self.f.flush()
         else:
