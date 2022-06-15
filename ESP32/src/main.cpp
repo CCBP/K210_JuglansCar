@@ -2,9 +2,9 @@
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <SPIFFS.h>
-
+#include <Wire.h>
 #include "web_server.h"
-#include "spi_dma_slave.h"
+// #include "spi_dma_slave.h"
 
 const char *ssid = "****";
 const char *password = "****";
@@ -16,8 +16,7 @@ void setup()
   digitalWrite(2, LOW);
 
   Serial.begin(115200);
-  Serial2.begin(5000000); // RX:GPIO16  TX:GPIO17
-  Serial2.setRxBufferSize(4096);
+  Wire.begin();
 
   // SPIFFS 初始化
   if (!SPIFFS.begin(true))

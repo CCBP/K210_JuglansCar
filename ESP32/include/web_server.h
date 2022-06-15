@@ -6,6 +6,7 @@
 
 #include <WiFi.h>
 #include <WebServer.h>
+#include <Wire.h>
 #include "ESPAsyncWebServer.h"
 #include "SPIFFS.h"
 

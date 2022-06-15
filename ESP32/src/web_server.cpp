@@ -81,7 +81,7 @@ void video_handler(void *pvParam)
           {
             if (Serial2.peek() == boundary[frame] && frame < sizeof(boundary))
             {
-              if (++frame == sizeof(boundary))  // 完成一帧图像的传输
+              if (++frame == sizeof(boundary)) // 完成一帧图像的传输
               {
                 float fps = 1000.0 / (millis() - (float)frame_last_time);
                 Serial.printf("[I] Frame send [%.02lf(fps)]\n", fps);
@@ -121,8 +121,11 @@ void video_server_init(void)
 
 void wsDrive_handler(const String &var)
 {
-  Serial2.print(var); // 发送给 K210
+  Wire.beginTransmission(0x24);
+  Wire.write(var.c_str());
+  Wire.endTransmission();
 }
+
 void wsCalibrate_handler(const String &var)
 {
   // Serial.println("wsCalibrate_handler");
@@ -310,7 +313,7 @@ void web_server_init(void)
   server.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest *request)
             { Serial.printf("Web Server[%s]\n", request->url().c_str());
     request->send(404, "text/plain", "404 Not Found"); });
-              // request->send(SPIFFS, "/favicon.ico", "image/ico"); });
+  // request->send(SPIFFS, "/favicon.ico", "image/ico"); });
   server.on("/drive", HTTP_GET, [](AsyncWebServerRequest *request)
             { Serial.printf("Web Server[%s]\n", request->url().c_str());
               request->send(SPIFFS, "/vehicle.html", String()); });
