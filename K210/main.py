@@ -65,6 +65,7 @@ while (True):
         angle = command[1]
         speed = command[2]
         recorder.save(img, angle, speed)
+        uart.write("OK")            # Send ack to ESP32
         print("[I] angle:%s\tspeed:%s" % (angle, speed))
     else:
         pin.led_g(1)                # Off

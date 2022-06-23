@@ -2,12 +2,11 @@ import uos, time
 
 class Dataset:
 
-    def __init__(self, gap = 50, path = "/sd/data/", name = "dataset.csv"):
-        self.gap = gap
+    def __init__(self, path = "/sd/data/", name = "dataset.csv"):
         self.path = path
         self.name = name
         self.data_num = 0
-        self.state = False  # dataset state: open(True) or close(False)
+        self.state = False                      # dataset state: open(True) or close(False)
         self.f = self.__open_file()
 
     def __open_file(self):
@@ -40,7 +39,6 @@ class Dataset:
                     f.close()
                 return None
             self.state = True
-            self.last_time = time.ticks_ms()
             print("[I] dataset initialized, %d sets of data already exist" % self.data_num)
             return f
         else:
@@ -81,12 +79,10 @@ class Dataset:
 
     def save(self, img, angle, speed):
         if (self.state):
-            now = time.ticks_ms()
-            if (now - self.last_time > self.gap):
-                self.data_num += 1
-                img.save(self.path + str(self.data_num) + ".jpg")               # MemoryError
-                self.f.write("{},{},{}\n".format(self.data_num, angle, speed))
-                self.f.flush()
+            self.data_num += 1
+            img.save(self.path + str(self.data_num) + ".jpg")               # MemoryError
+            self.f.write("{},{},{}\n".format(self.data_num, angle, speed))
+            self.f.flush()
         else:
             print("[E] dataset does not open")
 
