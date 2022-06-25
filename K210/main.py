@@ -49,26 +49,30 @@ while (True):
     '''
 
     command = uart.read()           # Receive control commands from ESP32
-    command = command.split(",")
-    if command[0] == "":            # Record mode on
-        record = True
-        angle = command[1]
-        speed = command[2]
-    elif command[0] == "":          # Record mode off
-        record = False
+    if command is not None:
+        command = command.decode("utf-8").split(",")
+        
+        if not auto:
+            if command[0] == "CS":  # Record mode on
+                record = True
+                angle = command[1]
+                speed = command[2]
+            elif command[0] == "CC":# Record mode off
+                record = False
 
-    if command[0] == "":            # Autopilot mode
-        auto = not auto
+        if not record:
+            if command[0] == "AS":  # Autopilot mode on
+                auto = True
+            else:                   # Autopilot mode off
+                auto = False
 
-    if record:                      # Record mode
-        pin.led_g(0)                # On
-        angle = command[1]
-        speed = command[2]
-        recorder.save(img, angle, speed)
-        uart.write("OK")            # Send ack to ESP32
-        print("[I] angle:%s\tspeed:%s" % (angle, speed))
-    else:
-        pin.led_g(1)                # Off
+        if record:                  # Record mode
+            pin.led_g(0)            # On
+            recorder.save(img, angle, speed)
+            uart.write("ACK")       # Send ack to ESP32
+            print("[I] angle:%s\tspeed:%s" % (angle, speed))
+        else:
+            pin.led_g(1)            # Off
 
     if auto:                        # Autopilot mode
         pin.led_b(0)                # On
@@ -78,7 +82,7 @@ while (True):
         fmap = kpu.forward(model, img)
         calcu_end = time.ticks_ms() # End calculation
         plist = fmap[:]
-        uart.write(plist[0])        # Send calculation results to ESP32
+        uart.write(str(plist[0]))   # Send calculation results to ESP32
         print("[I] pridict angle: %f\t(%.2f ms)" % (plist[0], calcu_end - calcu_start))
     else:
         pin.led_g(1)                # Off
