@@ -166,8 +166,8 @@ THROTTLE_REVERSE_PWM = 320      # pwm value for max reverse throttle
 - [MaixPy 文档简介](https://wiki.sipeed.com/soft/maixpy/zh/)
 - [Keras 中文文档](https://keras.io/zh/)
 - 我的博客：
-  - [Juglans](https://www.ccbp.me/2022/01/03/juglans/)
-  - [kmodel 避坑指南](https://www.ccbp.me/2022/04/25/kmodel/)
+  - [Juglans](https://www.amrzs.net/2022/01/03/juglans/)
+  - [kmodel 避坑指南](https://www.amrzs.net/2022/04/25/kmodel/)
 - [漂移驴车-1-硬件组装教程](https://www.bilibili.com/video/BV1qQ4y1S7kw?spm_id_from=444.41.header_right.fav_list.click)
 
 # 致谢
